@@ -17,18 +17,21 @@ def generateRandomIntArray(MINIMUM, MAXIMUM, COUNT):
     if MINIMUM > MAXIMUM or COUNT > MAXIMUM - MINIMUM + 1:
         raise ValueError("Check the base arguments 'min', 'max' and 'count'. Either 'min' is greater than 'max' or 'count' is higher then the range of 'min' and 'max'.")
     
-    numberList = set()
+    uniqueList = []
+    numberList = list(range(MINIMUM, MAXIMUM))
     
-    while len(numberList) < COUNT:
-        temp = random.randint(MINIMUM, MAXIMUM)
-        if temp not in numberList:
-            numberList.add(temp)
-    
-    return sorted(list(numberList))
+    while COUNT > 0:
+        temp = random.choice(numberList)
+        uniqueList.append(temp) # adds to the list without the need for an index
+        numberList.remove(temp)
+        print(COUNT) # testing line, can be commented
+        COUNT -= 1
+
+    return sorted(uniqueList)
 
 # Base Arguments
 min = 0
-max = 1000
-count = 40
+max = 100000
+count = 999
 
 print(generateRandomIntArray(min, max, count))
