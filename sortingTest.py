@@ -7,6 +7,8 @@ And returns a sorted array of unique integers from min to max of length count"
 
 I use Camel Case for variable and function names. When defining variables inside of a function i use all uppercases.
 
+Github page: https://github.com/EchoTD/py-sortingTest/blob/main/sortingTest.py
+
 """
 import random # for randomly generating integers
 
@@ -16,20 +18,17 @@ def generateRandomIntArray(MINIMUM, MAXIMUM, COUNT):
         raise ValueError("Check the base arguments 'min', 'max' and 'count'. Either 'min' is greater than 'max' or 'count' is higher then the range of 'min' and 'max'.")
     
     numberList = set()
+    
     while len(numberList) < COUNT:
-        numberList.add(random.randint(MINIMUM, MAXIMUM))
+        temp = random.randint(MINIMUM, MAXIMUM)
+        if temp not in numberList:
+            numberList.add(temp)
     
     return sorted(list(numberList))
 
 # Base Arguments
-min = 10
+min = 0
 max = 1000
-count = 990
+count = 40
 
-result = generateRandomIntArray(min, max, count)
-print(result)
-
-
-
-    
-    
+print(generateRandomIntArray(min, max, count))
